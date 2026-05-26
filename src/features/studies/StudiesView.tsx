@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { invoke } from '@tauri-apps/api/core'
+import { invoke } from '@/api/invoke'
 import { Pencil, Trash2, Check, X } from 'lucide-react'
 import { StudyDetail } from './StudyDetail'
 import { useAppStore } from '@/store/appStore'
@@ -37,6 +37,7 @@ export function StudiesView({ studyId, categoryId }: StudiesViewProps) {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [showConfirm, setShowConfirm] = useState(false)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [importError, setImportError] = useState<string | null>(null)
 
   const { data: cards = [] } = useQuery<Card[]>({
     queryKey: ['cards', studyId],
@@ -53,8 +54,13 @@ export function StudiesView({ studyId, categoryId }: StudiesViewProps) {
       queryClient.invalidateQueries({ queryKey: ['cards', studyId] })
       setShowConfirm(false)
       setSelectedFile(null)
+      setImportError(null)
     },
-    onError: console.error,
+    onError: (err: unknown) => {
+      setShowConfirm(false)
+      setSelectedFile(null)
+      setImportError(err instanceof Error ? err.message : String(err))
+    },
   })
 
   const deleteCardMutation = useMutation({
@@ -71,6 +77,7 @@ export function StudiesView({ studyId, categoryId }: StudiesViewProps) {
   })
 
   const handleImportClick = () => {
+    setImportError(null)
     if (typeof window !== 'undefined' && '__TAURI_INTERNALS__' in window) {
       fileInputRef.current?.click()
     }
@@ -82,15 +89,15 @@ export function StudiesView({ studyId, categoryId }: StudiesViewProps) {
   }
 
   return (
-    <div data-testid="study-detail" className="px-6 py-8 space-y-6">
+    <div data-testid="study-detail" className="px-4 py-4 space-y-4 lg:px-6 lg:py-8 lg:space-y-6">
       {/* Action bar */}
       <div
-        className="flex items-center justify-between pb-5"
+        className="flex flex-col gap-3 pb-4 lg:flex-row lg:items-center lg:justify-between lg:pb-5"
         style={{ borderBottom: '1px solid var(--border)' }}
       >
         <button
           onClick={() => navigateToCategoryDetail(categoryId)}
-          className="font-mono text-xs transition-colors duration-100"
+          className="font-mono text-xs transition-colors duration-100 self-start"
           style={{ color: 'var(--text-muted)' }}
           onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
           onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
@@ -98,18 +105,12 @@ export function StudiesView({ studyId, categoryId }: StudiesViewProps) {
           ← Volver
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {/* Card state summary — compact badges */}
-          <span
-            className="font-mono text-[10px] px-1.5 py-0.5 rounded"
-            style={{ color: '#2563eb', background: 'rgba(219,234,254,0.6)' }}
-          >
+          <span className="font-mono text-[11px] px-1.5 py-0.5 rounded font-semibold bg-blue-100/60 text-blue-950">
             {cards.filter((c) => c.state === 'new').length} new
           </span>
-          <span
-            className="font-mono text-[10px] px-1.5 py-0.5 rounded"
-            style={{ color: '#059669', background: 'rgba(209,250,229,0.6)' }}
-          >
+          <span className="font-mono text-[11px] px-1.5 py-0.5 rounded font-semibold bg-emerald-100/60 text-emerald-950">
             {cards.filter((c) => c.state === 'review').length} due
           </span>
 
@@ -171,6 +172,37 @@ export function StudiesView({ studyId, categoryId }: StudiesViewProps) {
             onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
             Cancelar
+          </button>
+        </div>
+      )}
+
+      {importError && (
+        <div
+          data-testid="import-error-banner"
+          className="flex items-start gap-3 py-3 px-4 rounded bg-red-100/60 border border-red-300"
+        >
+          <div className="flex-1 space-y-1">
+            <p className="text-sm font-semibold text-red-950">
+              Formato incorrecto — no se pudo importar el archivo.
+            </p>
+            <p className="text-xs text-red-900">
+              Verifica que el archivo siga el formato esperado.{' '}
+              <a
+                href="https://github.com/leonardespi/learnMe"
+                target="_blank"
+                rel="noreferrer"
+                className="underline"
+              >
+                Ver documentación
+              </a>
+            </p>
+          </div>
+          <button
+            onClick={() => setImportError(null)}
+            className="flex-shrink-0 p-0.5 rounded transition-opacity hover:opacity-70 text-red-950"
+            title="Cerrar"
+          >
+            <X size={16} />
           </button>
         </div>
       )}
@@ -241,7 +273,7 @@ export function CategoryStudiesView({ categoryId }: CategoryStudiesViewProps) {
   }
 
   return (
-    <div className="px-6 py-8 space-y-6">
+    <div className="px-4 py-4 space-y-4 lg:px-6 lg:py-8 lg:space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-semibold tracking-tight" style={{ color: 'var(--text)' }}>
           Estudios

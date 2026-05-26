@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Pencil, Trash2, Check, X } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import type { Card } from '@/types/domain'
 
 interface Props {
@@ -10,11 +11,11 @@ interface Props {
   onUpdateCard?: (id: string, front: string, back: string, tags: string[]) => void
 }
 
-const STATE_STYLE: Record<string, { color: string; bg: string }> = {
-  new: { color: '#2563eb', bg: 'rgba(219,234,254,0.6)' },
-  review: { color: '#059669', bg: 'rgba(209,250,229,0.6)' },
-  learning: { color: '#d97706', bg: 'rgba(254,243,199,0.6)' },
-  relearning: { color: '#9333ea', bg: 'rgba(243,232,255,0.6)' },
+const STATE_STYLE: Record<string, string> = {
+  new: 'bg-blue-100/60 text-blue-950',
+  review: 'bg-emerald-100/60 text-emerald-950',
+  learning: 'bg-orange-100/60 text-orange-950',
+  relearning: 'bg-red-100/60 text-red-950',
 }
 
 interface EditState {
@@ -73,7 +74,7 @@ export function StudyDetail({ cards, onImport, onAddCard, onDeleteCard, onUpdate
       ) : (
         <div style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
           {cards.map((card) => {
-            const s = STATE_STYLE[card.state] ?? STATE_STYLE.new
+            const s = STATE_STYLE[card.state] ?? STATE_STYLE['new']
             const isEditing = editing?.id === card.id
             return (
               <div
@@ -121,17 +122,16 @@ export function StudyDetail({ cards, onImport, onAddCard, onDeleteCard, onUpdate
                     </div>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-between">
-                    <span
-                      className="text-sm flex-1 truncate"
+                  <div className="flex items-start justify-between">
+                    <div
+                      className="text-sm flex-1 prose prose-sm max-w-none"
                       style={{ color: 'var(--text)' }}
                     >
-                      {card.front}
-                    </span>
+                      <ReactMarkdown>{card.front}</ReactMarkdown>
+                    </div>
                     <div className="flex items-center gap-2 ml-4 flex-shrink-0">
                       <span
-                        className="font-mono text-[10px] px-1.5 py-0.5 rounded"
-                        style={{ color: s.color, background: s.bg }}
+                        className={`font-mono text-[11px] px-1.5 py-0.5 rounded font-semibold ${s}`}
                       >
                         {card.state}
                       </span>
