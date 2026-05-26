@@ -188,6 +188,8 @@ Para importar un mazo desde archivo, el JSON debe cumplir el siguiente schema. L
 
 ### Schema completo
 
+> **Nota**: el bloque siguiente es el documento del JSON Schema (el validador). No es un archivo de mazo válido. En particular, **no incluyas `$schema` en tus archivos `.json`** — el schema tiene `additionalProperties: false` y lo rechazará.
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -322,6 +324,7 @@ El comando devuelve `{ "inserted": N, "skipped": M }`.
 | `schema error at /method: ...` | `method` no es `"anki"` | Cambia el valor a `"anki"` |
 | `schema error at /cards/0/front: ...` | `front` está vacío o ausente | Todos los `front` y `back` deben tener al menos 1 carácter |
 | `schema error at /cards/N: ...` | Propiedad no reconocida en la carta | Elimina las propiedades no listadas en el schema (es `additionalProperties: false`) |
+| `schema error at ...: ...` | Propiedad no reconocida en el raíz (ej. `$schema`) | El raíz también tiene `additionalProperties: false`. Solo se permiten `schemaVersion`, `method`, `name`, `tags`, `cards` |
 | `parse error: ...` | El archivo no es JSON válido | Valida tu JSON antes de importar |
 
 ---
