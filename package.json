@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:native": "bash scripts/run-native-e2e.sh",
     "test:rust": "cargo test --manifest-path src-tauri/Cargo.toml",
     "test:all": "npm run test && npm run test:rust",
     "coverage": "vitest run --coverage",
