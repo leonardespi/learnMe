@@ -28,11 +28,11 @@ interface SessionState {
 // Stops on null or duplicate ID to avoid infinite loops with stateless mocks/production.
 const MAX_PRELOAD = 300
 
-async function preloadViaNextCard(deckId: string): Promise<Card[]> {
+async function preloadViaNextCard(deckId: string, newLimit: number): Promise<Card[]> {
   const cards: Card[] = []
   const seenIds = new Set<string>()
   for (let i = 0; i < MAX_PRELOAD; i++) {
-    const card = await invoke<Card | null>('next_card', { deckId, newLimit: 20 })
+    const card = await invoke<Card | null>('next_card', { deckId, newLimit })
     if (card == null || seenIds.has(card.id)) break
     seenIds.add(card.id)
     cards.push(card)
@@ -51,6 +51,12 @@ function priorityOf(state: Card['state']): number {
   return 2
 }
 
+async function loadNewLimit(): Promise<number> {
+  const stored = await invoke<string | null>('settings_get', { key: 'daily_new_limit' }).catch(() => null)
+  const parsed = parseInt(stored ?? '', 10)
+  return !isNaN(parsed) && parsed >= 1 ? parsed : 20
+}
+
 export function useReviewSession(deckId: string): UseReviewSessionResult {
   const [session, setSession] = useState<SessionState>({
     queue: [],
@@ -63,6 +69,8 @@ export function useReviewSession(deckId: string): UseReviewSessionResult {
     let cancelled = false
 
     async function loadQueue() {
+      const newLimit = await loadNewLimit()
+
       let cards: Card[]
 
       // Production/E2E path: card_list_by_deck returns the full array → filter + sort locally.
@@ -73,11 +81,12 @@ export function useReviewSession(deckId: string): UseReviewSessionResult {
       )
 
       if (Array.isArray(allCards)) {
-        cards = allCards
-          .filter(isDue)
+        const dueNonNew = allCards.filter(c => c.state !== 'new' && isDue(c))
+        const newCards = allCards.filter(c => c.state === 'new').slice(0, newLimit)
+        cards = [...dueNonNew, ...newCards]
           .sort((a, b) => priorityOf(a.state) - priorityOf(b.state))
       } else {
-        cards = await preloadViaNextCard(deckId)
+        cards = await preloadViaNextCard(deckId, newLimit)
       }
 
       if (!cancelled) {
