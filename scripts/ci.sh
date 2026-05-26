@@ -36,8 +36,31 @@ echo "--- Tests Rust (cargo test) ---"
 npm run test:rust
 
 echo ""
-echo "--- Tests E2E (Playwright) ---"
+echo "--- Tests E2E (Playwright — Vite dev) ---"
 npm run test:e2e
+
+echo ""
+echo "--- cargo build --release ---"
+cargo build --release --manifest-path src-tauri/Cargo.toml
+
+echo ""
+echo "--- Tauri bundle (producción) ---"
+npm run tauri:build
+
+echo ""
+echo "--- Verificar bundles generados ---"
+ls target/release/bundle/deb/*.deb 2>/dev/null || ls target/release/bundle/appimage/*.AppImage 2>/dev/null || {
+  echo "ERROR: No bundle found in target/release/bundle/"; exit 1
+}
+
+echo ""
+echo "--- Tests E2E nativos (tauri-driver) — requiere tauri-driver + Xvfb ---"
+if command -v tauri-driver &>/dev/null && command -v Xvfb &>/dev/null; then
+  npm run test:e2e:native
+else
+  echo "SKIP: tauri-driver o Xvfb no disponibles. Instalar: cargo install tauri-driver && sudo apt install xvfb webkit2gtk-driver"
+  exit 1
+fi
 
 echo ""
 echo "=== CI completado sin errores ==="
