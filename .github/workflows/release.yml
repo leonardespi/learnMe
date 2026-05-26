@@ -1,0 +1,140 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  # ── Desktop ─────────────────────────────────────────────────────────────────
+  #
+  #  Billing multipliers: Linux 1×  |  macOS 10×  |  Windows 2×
+  #  Rust cache (Swatinem) cuts macOS build from ~30 min to ~10 min after first run.
+  #
+  build-desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            bundles: deb,rpm,appimage
+          - os: macos-latest       # Apple Silicon — arm64 native
+            bundles: dmg
+          - os: windows-latest
+            bundles: nsis
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux system deps
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libappindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ./src-tauri -> target
+
+      - run: npm ci
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # ── macOS signing (optional) ──────────────────────────────────────
+          # Without these the .dmg builds fine but Gatekeeper warns on first open.
+          # Add secrets in repo Settings → Secrets → Actions.
+          APPLE_CERTIFICATE:          ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY:     ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID:                   ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD:             ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID:              ${{ secrets.APPLE_TEAM_ID }}
+          # ── Windows signing (optional) ────────────────────────────────────
+          # Without these SmartScreen shows an "Unknown publisher" warning.
+          TAURI_SIGNING_PRIVATE_KEY:          ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          tagName:       ${{ github.ref_name }}
+          releaseName:   'learnMe ${{ github.ref_name }}'
+          releaseDraft:  false
+          prerelease:    false
+          args:          --bundles ${{ matrix.bundles }}
+
+  # ── Android ─────────────────────────────────────────────────────────────────
+  #
+  #  PREREQUISITE — this job will fail until you run locally:
+  #    npx tauri android init
+  #  then commit the generated android/ directory.
+  #
+  #  Runs on Linux (1× multiplier). NDK is cached after the first run.
+  #
+  build-android:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: nttld/setup-ndk@v1
+        id: ndk
+        with:
+          ndk-version: r26d
+          local-cache: true    # cached after first download — saves ~400 MB transfer
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: >-
+            aarch64-linux-android
+            armv7-linux-androideabi
+            i686-linux-android
+            x86_64-linux-android
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ./src-tauri -> target
+
+      - run: npm ci
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+          # ── Android release signing (required for .apk install on devices) ─
+          # Generate with: keytool -genkey -v -keystore release.jks ...
+          # Encode:        base64 -w 0 release.jks
+          # Add as secrets: ANDROID_KEY_STORE (base64), ANDROID_KEY_PASSWORD,
+          #                 ANDROID_KEY_ALIAS, ANDROID_KEY_ALIAS_PASSWORD
+        with:
+          tagName:     ${{ github.ref_name }}
+          releaseName: 'learnMe ${{ github.ref_name }}'
+          releaseDraft: false
+          prerelease:   false
+          args:         --target android --apk
