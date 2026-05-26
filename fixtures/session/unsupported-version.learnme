@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "generatedAt": "2026-01-15T10:00:00Z",
+  "appVersion": "0.2.0",
+  "checksum": "311943e497ba8331eb7b208a65aac5d175f8245c2610411af57e09f12bc519ab",
+  "data": {
+    "categories": [
+      {"id": "01944b2a-0000-7000-8000-000000000001", "name": "Test Category", "color": null}
+    ],
+    "studies": [
+      {"id": "01944b2a-0000-7000-8000-000000000002", "categoryId": "01944b2a-0000-7000-8000-000000000001", "name": "Test Deck", "method": "anki"}
+    ],
+    "cards": [
+      {"id": "01944b2a-0000-7000-8000-000000000003", "studyId": "01944b2a-0000-7000-8000-000000000002", "front": "casa", "back": "house", "tags": [], "state": "new", "stability": 0.0, "difficulty": 0.0, "elapsedDays": 0, "scheduledDays": 0, "reps": 0, "lapses": 0, "due": "2026-01-15T10:00:00Z", "lastReviewed": null}
+    ],
+    "reviewLogs": []
+  }
+}

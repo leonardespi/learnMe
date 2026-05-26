@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "generatedAt": "2026-01-15T10:00:00Z",
+  "appVersion": "0.1.0",
+  "checksum": "d7f3abcdf10f24f521e903b771d039f8db34a50e4993c5be7caa36d1a9292488",
+  "data": {
+    "categories": [
+      {"id": "01944b2a-0000-7000-8000-000000000001", "name": "Test Category", "color": null}
+    ],
+    "studies": [
+      {"id": "01944b2a-0000-7000-8000-000000000002", "categoryId": "01944b2a-0000-7000-8000-000000000001", "name": "Test Deck", "method": "anki"}
+    ],
+    "cards": [
+      {
+        "id": "01944b2a-0000-7000-8000-000000000003",
+        "studyId": "99999999-9999-7000-8000-999999999999",
+        "front": "orphan", "back": "card", "tags": [],
+        "state": "new", "stability": 0.0, "difficulty": 0.0,
+        "elapsedDays": 0, "scheduledDays": 0, "reps": 0, "lapses": 0,
+        "due": "2026-01-15T10:00:00Z", "lastReviewed": null
+      }
+    ],
+    "reviewLogs": []
+  }
+}

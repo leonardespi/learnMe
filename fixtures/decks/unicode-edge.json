@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0.0",
+  "method": "anki",
+  "name": "Unicode Edge Cases",
+  "tags": ["unicode", "test"],
+  "cards": [
+    { "front": "日本語", "back": "Japanese language", "tags": ["japanese", "言語"] },
+    { "front": "مرحبا", "back": "Hello (Arabic)", "tags": ["arabic", "greeting"] },
+    { "front": "∑ (sigma)", "back": "Greek letter used for summation", "tags": ["math", "greek"] },
+    { "front": "**negrita** y _cursiva_", "back": "Markdown: **bold** and _italic_", "tags": ["markdown"] },
+    { "front": "café résumé naïve", "back": "Words with diacritics", "tags": ["french", "diacritics"] }
+  ]
+}

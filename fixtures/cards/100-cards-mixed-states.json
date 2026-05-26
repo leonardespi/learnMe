@@ -1,0 +1,1402 @@
+[
+  {
+    "front": "question_000",
+    "back": "answer_000",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_001",
+    "back": "answer_001",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_002",
+    "back": "answer_002",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "review",
+    "stability": 12.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 2
+  },
+  {
+    "front": "question_003",
+    "back": "answer_003",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_004",
+    "back": "answer_004",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_005",
+    "back": "answer_005",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_006",
+    "back": "answer_006",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "review",
+    "stability": 16.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 4,
+    "lapses": 0
+  },
+  {
+    "front": "question_007",
+    "back": "answer_007",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_008",
+    "back": "answer_008",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_009",
+    "back": "answer_009",
+    "tags": [
+      "batch-0"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_010",
+    "back": "answer_010",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "review",
+    "stability": 20.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 3,
+    "lapses": 1
+  },
+  {
+    "front": "question_011",
+    "back": "answer_011",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_012",
+    "back": "answer_012",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_013",
+    "back": "answer_013",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_014",
+    "back": "answer_014",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "review",
+    "stability": 24.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 7,
+    "lapses": 2
+  },
+  {
+    "front": "question_015",
+    "back": "answer_015",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_016",
+    "back": "answer_016",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_017",
+    "back": "answer_017",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_018",
+    "back": "answer_018",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "review",
+    "stability": 28.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 6,
+    "lapses": 0
+  },
+  {
+    "front": "question_019",
+    "back": "answer_019",
+    "tags": [
+      "batch-1"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_020",
+    "back": "answer_020",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_021",
+    "back": "answer_021",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_022",
+    "back": "answer_022",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "review",
+    "stability": 12.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_023",
+    "back": "answer_023",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_024",
+    "back": "answer_024",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_025",
+    "back": "answer_025",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_026",
+    "back": "answer_026",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "review",
+    "stability": 16.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 4,
+    "lapses": 2
+  },
+  {
+    "front": "question_027",
+    "back": "answer_027",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_028",
+    "back": "answer_028",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_029",
+    "back": "answer_029",
+    "tags": [
+      "batch-2"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_030",
+    "back": "answer_030",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "review",
+    "stability": 20.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 3,
+    "lapses": 0
+  },
+  {
+    "front": "question_031",
+    "back": "answer_031",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_032",
+    "back": "answer_032",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_033",
+    "back": "answer_033",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_034",
+    "back": "answer_034",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "review",
+    "stability": 24.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 7,
+    "lapses": 1
+  },
+  {
+    "front": "question_035",
+    "back": "answer_035",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_036",
+    "back": "answer_036",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_037",
+    "back": "answer_037",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_038",
+    "back": "answer_038",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "review",
+    "stability": 28.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 6,
+    "lapses": 2
+  },
+  {
+    "front": "question_039",
+    "back": "answer_039",
+    "tags": [
+      "batch-3"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_040",
+    "back": "answer_040",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_041",
+    "back": "answer_041",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_042",
+    "back": "answer_042",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "review",
+    "stability": 12.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 0
+  },
+  {
+    "front": "question_043",
+    "back": "answer_043",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_044",
+    "back": "answer_044",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_045",
+    "back": "answer_045",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_046",
+    "back": "answer_046",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "review",
+    "stability": 16.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 4,
+    "lapses": 1
+  },
+  {
+    "front": "question_047",
+    "back": "answer_047",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_048",
+    "back": "answer_048",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_049",
+    "back": "answer_049",
+    "tags": [
+      "batch-4"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_050",
+    "back": "answer_050",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "review",
+    "stability": 20.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 3,
+    "lapses": 2
+  },
+  {
+    "front": "question_051",
+    "back": "answer_051",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_052",
+    "back": "answer_052",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_053",
+    "back": "answer_053",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_054",
+    "back": "answer_054",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "review",
+    "stability": 24.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 7,
+    "lapses": 0
+  },
+  {
+    "front": "question_055",
+    "back": "answer_055",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_056",
+    "back": "answer_056",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_057",
+    "back": "answer_057",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_058",
+    "back": "answer_058",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "review",
+    "stability": 28.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 6,
+    "lapses": 1
+  },
+  {
+    "front": "question_059",
+    "back": "answer_059",
+    "tags": [
+      "batch-5"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_060",
+    "back": "answer_060",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_061",
+    "back": "answer_061",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_062",
+    "back": "answer_062",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "review",
+    "stability": 12.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 2
+  },
+  {
+    "front": "question_063",
+    "back": "answer_063",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_064",
+    "back": "answer_064",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_065",
+    "back": "answer_065",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_066",
+    "back": "answer_066",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "review",
+    "stability": 16.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 4,
+    "lapses": 0
+  },
+  {
+    "front": "question_067",
+    "back": "answer_067",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_068",
+    "back": "answer_068",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_069",
+    "back": "answer_069",
+    "tags": [
+      "batch-6"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_070",
+    "back": "answer_070",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "review",
+    "stability": 20.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 3,
+    "lapses": 1
+  },
+  {
+    "front": "question_071",
+    "back": "answer_071",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_072",
+    "back": "answer_072",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_073",
+    "back": "answer_073",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_074",
+    "back": "answer_074",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "review",
+    "stability": 24.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 7,
+    "lapses": 2
+  },
+  {
+    "front": "question_075",
+    "back": "answer_075",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_076",
+    "back": "answer_076",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_077",
+    "back": "answer_077",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_078",
+    "back": "answer_078",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "review",
+    "stability": 28.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 6,
+    "lapses": 0
+  },
+  {
+    "front": "question_079",
+    "back": "answer_079",
+    "tags": [
+      "batch-7"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_080",
+    "back": "answer_080",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_081",
+    "back": "answer_081",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_082",
+    "back": "answer_082",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "review",
+    "stability": 12.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_083",
+    "back": "answer_083",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_084",
+    "back": "answer_084",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_085",
+    "back": "answer_085",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_086",
+    "back": "answer_086",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "review",
+    "stability": 16.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 4,
+    "lapses": 2
+  },
+  {
+    "front": "question_087",
+    "back": "answer_087",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_088",
+    "back": "answer_088",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_089",
+    "back": "answer_089",
+    "tags": [
+      "batch-8"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_090",
+    "back": "answer_090",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "review",
+    "stability": 20.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 3,
+    "lapses": 0
+  },
+  {
+    "front": "question_091",
+    "back": "answer_091",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_092",
+    "back": "answer_092",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_093",
+    "back": "answer_093",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_094",
+    "back": "answer_094",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "review",
+    "stability": 24.0,
+    "difficulty": 5.0,
+    "due": "2026-02-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 7,
+    "lapses": 1
+  },
+  {
+    "front": "question_095",
+    "back": "answer_095",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  },
+  {
+    "front": "question_096",
+    "back": "answer_096",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "new",
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-01-01T00:00:00Z",
+    "last_review": null,
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "front": "question_097",
+    "back": "answer_097",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "learning",
+    "stability": 3.13,
+    "difficulty": 6.8,
+    "due": "2026-01-01T00:10:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 1,
+    "lapses": 0
+  },
+  {
+    "front": "question_098",
+    "back": "answer_098",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "review",
+    "stability": 28.0,
+    "difficulty": 5.0,
+    "due": "2025-12-01T00:00:00Z",
+    "last_review": "2025-12-01T00:00:00Z",
+    "reps": 6,
+    "lapses": 2
+  },
+  {
+    "front": "question_099",
+    "back": "answer_099",
+    "tags": [
+      "batch-9"
+    ],
+    "state": "relearning",
+    "stability": 2.0,
+    "difficulty": 7.5,
+    "due": "2026-01-01T00:05:00Z",
+    "last_review": "2026-01-01T00:00:00Z",
+    "reps": 5,
+    "lapses": 1
+  }
+]

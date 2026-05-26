@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "generatedAt": "2026-01-15T10:00:00Z",
+  "appVersion": "0.1.0",
+  "checksum": "c2722b3ac8e9f3f0c46146b5eb1bdf9b83fbaafa2229e704a5ea720769602c70",
+  "data": {
+    "categories": [
+      {"id": "01944b2a-0000-7000-8000-000000000001", "name": "Test Category", "color": null}
+    ],
+    "studies": [
+      {"id": "01944b2a-0000-7000-8000-000000000002", "categoryId": "01944b2a-0000-7000-8000-000000000001", "name": "Test Deck", "method": "anki"}
+    ],
+    "cards": [
+      {"id": "01944b2a-0000-7000-8000-000000000003", "studyId": "01944b2a-0000-7000-8000-000000000002", "front": "casa", "back": "house", "tags": [], "state": "new", "stability": 0.0, "difficulty": 0.0, "elapsedDays": 0, "scheduledDays": 0, "reps": 0, "lapses": 0, "due": "2026-01-15T10:00:00Z", "lastReviewed": null},
+      {"id": "01944b2a-0000-7000-8000-000000000004", "studyId": "01944b2a-0000-7000-8000-000000000002", "front": "correr", "back": "to run", "tags": ["verb"], "state": "new", "stability": 0.0, "difficulty": 0.0, "elapsedDays": 0, "scheduledDays": 0, "reps": 0, "lapses": 0, "due": "2026-01-15T10:00:00Z", "lastReviewed": null}
+    ],
+    "reviewLogs": []
+  }
+}

@@ -1,0 +1,13 @@
+---
+source: src-tauri/tests/phase2_unit.rs
+expression: result
+---
+CardFsrsUpdate {
+    stability: 3.1262,
+    difficulty: 5.314577829570867,
+    due: "2026-01-01T00:10:00+00:00",
+    last_review: "2026-01-01T00:00:00+00:00",
+    state: "learning",
+    reps: 1,
+    lapses: 0,
+}

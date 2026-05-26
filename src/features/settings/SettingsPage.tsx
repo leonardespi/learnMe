@@ -1,0 +1,99 @@
+import { useState, useEffect, useCallback } from 'react'
+import { invoke } from '@tauri-apps/api/core'
+import { SettingsView, ExportImportStatus } from './SettingsView'
+import { useAppStore } from '@/store/appStore'
+
+const IN_TAURI = '__TAURI_INTERNALS__' in window
+
+async function pickSavePath(): Promise<string | null> {
+  if (IN_TAURI) {
+    const { save } = await import('@tauri-apps/plugin-dialog')
+    return save({
+      defaultPath: 'session.learnme',
+      filters: [{ name: 'learnMe backup', extensions: ['learnme'] }],
+    })
+  }
+  return '/tmp/learnme-session.learnme'
+}
+
+async function pickOpenPath(): Promise<string | null> {
+  if (IN_TAURI) {
+    const { open } = await import('@tauri-apps/plugin-dialog')
+    const result = await open({
+      filters: [{ name: 'learnMe backup', extensions: ['learnme'] }],
+    })
+    return Array.isArray(result) ? result[0] : result
+  }
+  return '/tmp/learnme-session.learnme'
+}
+
+export function SettingsPage() {
+  const [exportStatus, setExportStatus] = useState<ExportImportStatus>('idle')
+  const [importStatus, setImportStatus] = useState<ExportImportStatus>('idle')
+  const navigateToCategories = useAppStore((s) => s.navigateToCategories)
+
+  const handleExport = useCallback(async () => {
+    try {
+      const destPath = await pickSavePath()
+      if (!destPath) return
+      await invoke('session_export', { destPath })
+      setExportStatus('success')
+    } catch {
+      setExportStatus('error')
+    }
+  }, [])
+
+  const handleImport = useCallback(
+    async (srcPath?: string, simulateError?: string) => {
+      try {
+        const resolvedPath = srcPath ?? (await pickOpenPath())
+        if (!resolvedPath) return
+        await invoke('session_import_cmd', {
+          srcPath: resolvedPath,
+          mode: 'merge',
+          simulateError,
+        })
+        setImportStatus('success')
+      } catch {
+        setImportStatus('error')
+      }
+    },
+    [],
+  )
+
+  useEffect(() => {
+    const onMockImport = (e: Event) => {
+      const { fixturePath, simulateError } = (
+        e as CustomEvent<{ fixturePath: string; simulateError?: string }>
+      ).detail
+      handleImport(fixturePath, simulateError)
+    }
+    window.addEventListener('mock:session-import', onMockImport)
+    return () => window.removeEventListener('mock:session-import', onMockImport)
+  }, [handleImport])
+
+  return (
+    <div>
+      <div
+        className="flex items-center px-8 py-3"
+        style={{ borderBottom: '1px solid var(--border)' }}
+      >
+        <button
+          onClick={navigateToCategories}
+          className="font-mono text-xs transition-colors duration-100"
+          style={{ color: 'var(--text-muted)' }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+        >
+          ← Volver
+        </button>
+      </div>
+      <SettingsView
+        exportStatus={exportStatus}
+        importStatus={importStatus}
+        onExport={handleExport}
+        onImport={() => handleImport()}
+      />
+    </div>
+  )
+}

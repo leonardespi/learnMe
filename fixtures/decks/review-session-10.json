@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "method": "anki",
+  "name": "Review Session 10",
+  "tags": ["test", "phase5"],
+  "cards": [
+    { "front": "apple", "back": "manzana", "tags": [] },
+    { "front": "house", "back": "casa", "tags": [] },
+    { "front": "dog", "back": "perro", "tags": [] },
+    { "front": "cat", "back": "gato", "tags": [] },
+    { "front": "water", "back": "agua", "tags": [] },
+    { "front": "bread", "back": "pan", "tags": [] },
+    { "front": "book", "back": "libro", "tags": [] },
+    { "front": "door", "back": "puerta", "tags": [] },
+    { "front": "table", "back": "mesa", "tags": [] },
+    { "front": "chair", "back": "silla", "tags": [] }
+  ]
+}

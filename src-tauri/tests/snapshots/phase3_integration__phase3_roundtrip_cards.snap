@@ -1,0 +1,409 @@
+---
+source: src-tauri/tests/phase3_integration.rs
+assertion_line: 198
+expression: snapshot
+---
+[
+  {
+    "back": "house",
+    "front": "casa",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "car",
+    "front": "coche",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "dog",
+    "front": "perro",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "cat",
+    "front": "gato",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "water",
+    "front": "agua",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "milk",
+    "front": "leche",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "bread",
+    "front": "pan",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "city",
+    "front": "ciudad",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "street",
+    "front": "calle",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "job",
+    "front": "trabajo",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "money",
+    "front": "dinero",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "friend",
+    "front": "amigo",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "family",
+    "front": "familia",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "mother",
+    "front": "madre",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "father",
+    "front": "padre",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "brother",
+    "front": "hermano",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "book",
+    "front": "libro",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "table",
+    "front": "mesa",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "chair",
+    "front": "silla",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "door",
+    "front": "puerta",
+    "state": "new",
+    "tags": [
+      "noun"
+    ]
+  },
+  {
+    "back": "to walk",
+    "front": "caminar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to run",
+    "front": "correr",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to speak",
+    "front": "hablar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to listen",
+    "front": "escuchar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to eat",
+    "front": "comer",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to drink",
+    "front": "beber",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to sleep",
+    "front": "dormir",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to work",
+    "front": "trabajar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to study",
+    "front": "estudiar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to read",
+    "front": "leer",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to write",
+    "front": "escribir",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to live",
+    "front": "vivir",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to arrive",
+    "front": "llegar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to go out",
+    "front": "salir",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to return",
+    "front": "volver",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to begin",
+    "front": "empezar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to finish",
+    "front": "terminar",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to want",
+    "front": "querer",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to be able to",
+    "front": "poder",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "to have",
+    "front": "tener",
+    "state": "new",
+    "tags": [
+      "verb"
+    ]
+  },
+  {
+    "back": "big",
+    "front": "grande",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "small",
+    "front": "pequeño",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "red",
+    "front": "rojo",
+    "state": "new",
+    "tags": [
+      "adjective",
+      "color"
+    ]
+  },
+  {
+    "back": "blue",
+    "front": "azul",
+    "state": "new",
+    "tags": [
+      "adjective",
+      "color"
+    ]
+  },
+  {
+    "back": "new",
+    "front": "nuevo",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "old",
+    "front": "viejo",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "good",
+    "front": "bueno",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "bad",
+    "front": "malo",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "happy",
+    "front": "feliz",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "back": "difficult",
+    "front": "difícil",
+    "state": "new",
+    "tags": [
+      "adjective"
+    ]
+  }
+]

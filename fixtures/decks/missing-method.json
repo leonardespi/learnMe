@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0.0",
+  "name": "Spanish A2 Vocabulary",
+  "tags": ["language", "spanish"],
+  "cards": [
+    { "front": "casa", "back": "house", "tags": ["noun"] }
+  ]
+}

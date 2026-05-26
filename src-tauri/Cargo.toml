@@ -1,0 +1,32 @@
+[package]
+name = "learnme"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "learnme_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "learnme"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+refinery = { version = "0.8", features = ["rusqlite"] }
+thiserror = "1"
+uuid = { version = "1", features = ["v7", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+rs-fsrs = "1.2.1"
+jsonschema = "0.17"
+sha2 = "0.10"
+tauri-plugin-dialog = "2"
+
+[dev-dependencies]
+insta = { version = "1", features = ["json"] }

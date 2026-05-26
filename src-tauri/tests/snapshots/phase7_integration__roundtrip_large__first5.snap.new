@@ -1,0 +1,79 @@
+---
+source: src-tauri/tests/phase7_integration.rs
+assertion_line: 445
+expression: first5
+---
+[
+  {
+    "id": "019e6232-1a7b-7af0-9f33-d03c0c987c72",
+    "deckId": "019e6232-1a7a-7b53-93fe-8070867c163d",
+    "front": "casa",
+    "back": "house",
+    "tags": [
+      "noun"
+    ],
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-05-26T02:51:51.291136992+00:00",
+    "lastReview": null,
+    "state": "new",
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "id": "019e6232-1a7b-7af0-9f33-d0633d13d050",
+    "deckId": "019e6232-1a7a-7b53-93fe-8070867c163d",
+    "front": "front-0",
+    "back": "back-0",
+    "tags": [],
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-05-26T02:51:51.291525180+00:00",
+    "lastReview": null,
+    "state": "new",
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "id": "019e6232-1a7b-7af0-9f33-d080838718cd",
+    "deckId": "019e6232-1a7a-7b53-93fe-8070867c163d",
+    "front": "front-1",
+    "back": "back-1",
+    "tags": [],
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-05-26T02:51:51.291755897+00:00",
+    "lastReview": null,
+    "state": "new",
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "id": "019e6232-1a7b-7af0-9f33-d09bba3d9e39",
+    "deckId": "019e6232-1a7a-7b53-93fe-8070867c163d",
+    "front": "front-2",
+    "back": "back-2",
+    "tags": [],
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-05-26T02:51:51.291934203+00:00",
+    "lastReview": null,
+    "state": "new",
+    "reps": 0,
+    "lapses": 0
+  },
+  {
+    "id": "019e6232-1a7c-7932-a2a6-3b001c606574",
+    "deckId": "019e6232-1a7a-7b53-93fe-8070867c163d",
+    "front": "front-3",
+    "back": "back-3",
+    "tags": [],
+    "stability": 0.0,
+    "difficulty": 0.0,
+    "due": "2026-05-26T02:51:51.292158108+00:00",
+    "lastReview": null,
+    "state": "new",
+    "reps": 0,
+    "lapses": 0
+  }
+]

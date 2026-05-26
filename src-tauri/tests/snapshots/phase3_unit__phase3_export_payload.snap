@@ -1,0 +1,27 @@
+---
+source: src-tauri/tests/phase3_unit.rs
+assertion_line: 301
+expression: snapshot_cards
+---
+[
+  {
+    "back": "one",
+    "difficulty": 0.0,
+    "front": "uno",
+    "stability": 0.0,
+    "state": "new",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "back": "two",
+    "difficulty": 0.0,
+    "front": "dos",
+    "stability": 0.0,
+    "state": "new",
+    "tags": [
+      "number"
+    ]
+  }
+]

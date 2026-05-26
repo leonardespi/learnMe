@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0.0",
+  "method": "anki",
+  "name": "Review Session 5",
+  "tags": ["test", "phase5"],
+  "cards": [
+    { "front": "sun", "back": "sol", "tags": [] },
+    { "front": "moon", "back": "luna", "tags": [] },
+    { "front": "star", "back": "estrella", "tags": [] },
+    { "front": "sky", "back": "cielo", "tags": [] },
+    { "front": "wind", "back": "viento", "tags": [] }
+  ]
+}
