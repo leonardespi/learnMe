@@ -9,21 +9,14 @@ import { CategoryStudiesView, StudiesView } from '@/features/studies/StudiesView
 import { ReviewSession } from '@/features/methods/anki/ReviewSession'
 import { StatsPage } from '@/features/stats/StatsPage'
 import { SettingsPage } from '@/features/settings/SettingsPage'
+import { SETTINGS_SECTIONS, type SettingsSectionId } from '@/features/settings/SettingsView'
 import { CommandPalette } from '@/features/command-palette/CommandPalette'
 import { useAppStore } from '@/store/appStore'
 import { useTheme } from '@/shared/theme/useTheme'
 import { useEffect } from 'react'
-import type { Category, Study } from '@/types/domain'
+import type { Category, Study, StudyMethod } from '@/types/domain'
 
 // ─── Global header (spans col2 + col3) ───────────────────────────────────────
-
-const VIEW_LABEL: Record<string, string> = {
-  categories: 'Categorías',
-  'category-detail': 'Categorías',
-  'study-detail': 'Mazo',
-  stats: 'Estadísticas',
-  settings: 'Ajustes',
-}
 
 function GlobalHeader() {
   const view = useAppStore((s) => s.view)
@@ -36,7 +29,7 @@ function GlobalHeader() {
       style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg)' }}
     >
       <span className="font-mono text-[11px]" style={{ color: 'var(--text-muted)' }}>
-        {VIEW_LABEL[view.name] ?? 'learnMe'}
+        learnMe
       </span>
       <button
         onClick={openCommandPalette}
@@ -245,11 +238,17 @@ function CategoryListCol2() {
   )
 }
 
+const METHOD_TAG: Record<string, { background: string; color: string }> = {
+  anki: { background: '#7c3aed', color: '#ffffff' },
+}
+const DEFAULT_TAG = { background: '#6b7280', color: '#ffffff' }
+
 function StudiesListCol2({ categoryId }: { categoryId: string }) {
   const navigateToStudyDetail = useAppStore((s) => s.navigateToStudyDetail)
   const view = useAppStore((s) => s.view)
   const [showForm, setShowForm] = useState(false)
   const [name, setName] = useState('')
+  const [method, setMethod] = useState<StudyMethod>('anki')
   const [renamingId, setRenamingId] = useState<string | null>(null)
   const [renameValue, setRenameValue] = useState('')
   const queryClient = useQueryClient()
@@ -260,9 +259,9 @@ function StudiesListCol2({ categoryId }: { categoryId: string }) {
   })
 
   const create = useMutation({
-    mutationFn: (n: string) =>
-      invoke('study_create', { payload: { category_id: categoryId, method: 'anki', name: n, payload: {} } }),
-    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['studies', categoryId] }); setShowForm(false); setName('') },
+    mutationFn: ({ name: n, method: m }: { name: string; method: StudyMethod }) =>
+      invoke('study_create', { payload: { category_id: categoryId, method: m, name: n, payload: {} } }),
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['studies', categoryId] }); setShowForm(false); setName(''); setMethod('anki') },
     onError: console.error,
   })
 
@@ -308,34 +307,53 @@ function StudiesListCol2({ categoryId }: { categoryId: string }) {
 
       {showForm && (
         <div
-          className="flex items-center gap-2 px-4 py-2 flex-shrink-0"
+          className="flex flex-col gap-1.5 px-4 py-2 flex-shrink-0"
           style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)' }}
         >
-          <input
-            data-testid="input-study-name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nombre..."
-            autoFocus
-            className="flex-1 bg-transparent text-xs outline-none py-0.5"
-            style={{ color: 'var(--text)', borderBottom: '1px solid var(--accent)' }}
-            onKeyDown={(e) => e.key === 'Enter' && name.trim() && create.mutate(name.trim())}
-          />
-          <button
-            data-testid="btn-save-study"
-            onClick={() => name.trim() && create.mutate(name.trim())}
-            className="p-1 rounded flex-shrink-0"
-            style={{ color: 'var(--accent)' }}
-          >
-            <Check size={14} />
-          </button>
-          <button
-            onClick={() => { setShowForm(false); setName('') }}
-            className="p-1 rounded flex-shrink-0"
-            style={{ color: 'var(--text-muted)' }}
-          >
-            <X size={14} />
-          </button>
+          <div className="flex items-center gap-2">
+            <input
+              data-testid="input-study-name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Nombre..."
+              autoFocus
+              className="flex-1 bg-transparent text-xs outline-none py-0.5"
+              style={{ color: 'var(--text)', borderBottom: '1px solid var(--accent)' }}
+              onKeyDown={(e) => e.key === 'Enter' && name.trim() && create.mutate({ name: name.trim(), method })}
+            />
+            <button
+              data-testid="btn-save-study"
+              onClick={() => name.trim() && create.mutate({ name: name.trim(), method })}
+              className="p-1 rounded flex-shrink-0"
+              style={{ color: 'var(--accent)' }}
+            >
+              <Check size={14} />
+            </button>
+            <button
+              onClick={() => { setShowForm(false); setName(''); setMethod('anki') }}
+              className="p-1 rounded flex-shrink-0"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              <X size={14} />
+            </button>
+          </div>
+          <div className="flex items-center gap-1.5 pb-0.5">
+            {(['anki'] as StudyMethod[]).map((m) => (
+              <button
+                key={m}
+                data-testid={`method-tag-${m}`}
+                onClick={() => setMethod(m)}
+                className="font-mono text-[10px] px-2 py-0.5 rounded-full transition-colors duration-100"
+                style={{
+                  color: method === m ? 'var(--bg)' : 'var(--text-muted)',
+                  background: method === m ? 'var(--accent)' : 'transparent',
+                  border: `1px solid ${method === m ? 'var(--accent)' : 'var(--border)'}`,
+                }}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
@@ -401,6 +419,12 @@ function StudiesListCol2({ categoryId }: { categoryId: string }) {
                     >
                       {study.name}
                     </span>
+                    <span
+                      className="font-mono text-[9px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0"
+                      style={METHOD_TAG[study.method] ?? DEFAULT_TAG}
+                    >
+                      {study.method}
+                    </span>
                     <div className="flex items-center gap-0.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-100">
                       <button
                         onClick={(e) => { e.stopPropagation(); setRenamingId(study.id); setRenameValue(study.name) }}
@@ -447,6 +471,40 @@ function WelcomeInspection() {
   )
 }
 
+// ─── Col2 settings nav ────────────────────────────────────────────────────────
+
+function SettingsNavCol2() {
+  const settingsSection = useAppStore((s) => s.settingsSection)
+  const setSettingsSection = useAppStore((s) => s.setSettingsSection)
+
+  return (
+    <div className="flex flex-col h-full">
+      <div className="flex-1 overflow-y-auto">
+        {SETTINGS_SECTIONS.map((section) => {
+          const isActive = settingsSection === section.id
+          return (
+            <div
+              key={section.id}
+              onClick={() => setSettingsSection(section.id as SettingsSectionId)}
+              className="flex items-center gap-2.5 px-4 py-2.5 cursor-pointer transition-colors duration-75"
+              style={{ background: isActive ? 'var(--interactive)' : undefined }}
+              onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--interactive-hover)' }}
+              onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent' }}
+            >
+              <span
+                className="text-sm truncate"
+                style={{ color: isActive ? 'var(--text)' : 'var(--text-muted)', fontWeight: isActive ? 500 : 400 }}
+              >
+                {section.label}
+              </span>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 // ─── Col2 list router ─────────────────────────────────────────────────────────
 
 function ListPanelContent() {
@@ -456,6 +514,7 @@ function ListPanelContent() {
   if (view.name === 'category-detail') return <StudiesListCol2 categoryId={view.categoryId} />
   if (view.name === 'study-detail' || view.name === 'stats')
     return <StudiesListCol2 categoryId={view.categoryId} />
+  if (view.name === 'settings') return <SettingsNavCol2 />
   return null
 }
 
@@ -506,10 +565,26 @@ function MobileContent() {
   return null
 }
 
+// ─── Media-query hook — avoids rendering both layouts simultaneously ───────────
+
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' ? window.matchMedia('(min-width: 1024px)').matches : false
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isDesktop
+}
+
 // ─── Root layout ──────────────────────────────────────────────────────────────
 
 export function AppLayout() {
   useTheme()
+  const isDesktop = useIsDesktop()
   const view = useAppStore((s) => s.view)
   const navigateToCategories = useAppStore((s) => s.navigateToCategories)
   const navigateToSettings = useAppStore((s) => s.navigateToSettings)
@@ -532,52 +607,54 @@ export function AppLayout() {
 
   return (
     <>
-      {/* ── Desktop: fixed 3-column panel layout ── */}
-      <div
-        className="hidden lg:flex h-screen overflow-hidden"
-        style={{ background: 'var(--bg)' }}
-      >
-        {/* Col 1: Sidebar — fixed w-64, collapses in zen mode */}
+      {isDesktop ? (
+        /* ── Desktop: fixed 3-column panel layout ── */
         <div
-          className="flex-shrink-0 overflow-hidden transition-all duration-150"
-          style={{ width: isZenMode ? 0 : 256 }}
+          className="hidden lg:flex h-screen overflow-hidden"
+          style={{ background: 'var(--bg)' }}
         >
-          <Sidebar />
-        </div>
+          {/* Col 1: Sidebar — fixed w-64, collapses in zen mode */}
+          <div
+            className="flex-shrink-0 overflow-hidden transition-all duration-150"
+            style={{ width: isZenMode ? 0 : 256 }}
+          >
+            <Sidebar />
+          </div>
 
-        {/* Col 2+3 wrapper: shared GlobalHeader + row of panels */}
-        <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-          <GlobalHeader />
+          {/* Col 2+3 wrapper: shared GlobalHeader + row of panels */}
+          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <GlobalHeader />
 
-          <div className="flex-1 flex overflow-hidden">
-            {/* Col 2: List panel — fixed w-[480px], hidden in zen mode */}
-            {!isZenMode && (
-              <div
-                className="flex-shrink-0 flex flex-col overflow-hidden"
-                style={{ width: 480, borderRight: '1px solid var(--border)' }}
-              >
-                <ListPanelContent />
+            <div className="flex-1 flex overflow-hidden">
+              {/* Col 2: List panel — fixed w-[480px], hidden in zen mode */}
+              {!isZenMode && (
+                <div
+                  className="flex-shrink-0 flex flex-col overflow-hidden"
+                  style={{ width: 480, borderRight: '1px solid var(--border)' }}
+                >
+                  <ListPanelContent />
+                </div>
+              )}
+
+              {/* Col 3: Inspection panel — takes all remaining space */}
+              <div className={`flex-1 min-w-0 ${isZenMode ? 'overflow-hidden flex flex-col' : 'overflow-y-auto'}`}>
+                <InspectionContent />
               </div>
-            )}
-
-            {/* Col 3: Inspection panel — takes all remaining space */}
-            <div className="flex-1 overflow-y-auto min-w-0">
-              <InspectionContent />
             </div>
           </div>
         </div>
-      </div>
-
-      {/* ── Mobile: single-column with bottom tabs ── */}
-      <div
-        className="flex lg:hidden min-h-screen flex-col w-full"
-        style={{ background: 'var(--bg)' }}
-      >
-        <GlobalHeader />
-        <main className="flex-1 overflow-y-auto pb-14">
-          <MobileContent />
-        </main>
-      </div>
+      ) : (
+        /* ── Mobile: single-column with bottom tabs ── */
+        <div
+          className="flex lg:hidden min-h-screen flex-col w-full"
+          style={{ background: 'var(--bg)' }}
+        >
+          <GlobalHeader />
+          <main className="flex-1 overflow-y-auto pb-14">
+            <MobileContent />
+          </main>
+        </div>
+      )}
 
       <BottomTabs />
       <CommandPalette studies={allStudies} />

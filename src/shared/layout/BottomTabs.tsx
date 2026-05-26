@@ -17,12 +17,13 @@ export function BottomTabs() {
   return (
     <nav
       data-testid="bottom-tabs"
-      className="flex lg:hidden fixed bottom-0 left-0 right-0 z-50 w-full items-center py-1"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-50 w-full"
       style={{
         background: 'var(--surface)',
         borderTop: '1px solid var(--border)',
       }}
     >
+      <div data-testid="bottom-nav" className="flex w-full items-center py-1">
       <button
         onClick={navigateToCategories}
         className={`${tabBase} ${catActive ? 'text-[var(--text)]' : 'text-[var(--text-muted)]'}`}
@@ -41,7 +42,7 @@ export function BottomTabs() {
       </button>
 
       <button
-        data-testid="btn-theme-toggle"
+        data-testid="theme-toggle"
         aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         className={`${tabBase} text-[var(--text-muted)]`}
@@ -49,6 +50,7 @@ export function BottomTabs() {
         <span className="text-xl leading-none">{theme === 'light' ? '◑' : '○'}</span>
         <span className="tracking-wide">Tema</span>
       </button>
+      </div>
     </nav>
   )
 }
