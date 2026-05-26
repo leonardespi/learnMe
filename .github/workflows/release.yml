@@ -57,16 +57,11 @@ jobs:
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # ── macOS signing (optional — build succeeds unsigned, Gatekeeper warns) ──
-          APPLE_CERTIFICATE:          ${{ secrets.APPLE_CERTIFICATE }}
-          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-          APPLE_SIGNING_IDENTITY:     ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_ID:                   ${{ secrets.APPLE_ID }}
-          APPLE_PASSWORD:             ${{ secrets.APPLE_PASSWORD }}
-          APPLE_TEAM_ID:              ${{ secrets.APPLE_TEAM_ID }}
-          # ── Windows signing (optional — build succeeds unsigned, SmartScreen warns) ──
-          TAURI_SIGNING_PRIVATE_KEY:          ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+          # ── Signing (add secrets to repo Settings → Secrets when you have certificates) ──
+          # macOS: APPLE_CERTIFICATE (base64), APPLE_CERTIFICATE_PASSWORD, APPLE_SIGNING_IDENTITY,
+          #        APPLE_ID, APPLE_PASSWORD, APPLE_TEAM_ID
+          # Windows: TAURI_SIGNING_PRIVATE_KEY, TAURI_SIGNING_PRIVATE_KEY_PASSWORD
+          # Do NOT set these env vars to empty strings — the action tries to import them regardless.
         with:
           tagName:      ${{ github.ref_name }}
           releaseName:  learnMe ${{ github.ref_name }}
