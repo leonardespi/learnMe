@@ -66,6 +66,7 @@ pub fn run() {
             commands::stats::get_stats,
             commands::session::session_export,
             commands::session::session_import_cmd,
+            commands::test_utils::dev_reset_db,
         ])
         .run(tauri::generate_context!())
         .expect("error while running learnMe");

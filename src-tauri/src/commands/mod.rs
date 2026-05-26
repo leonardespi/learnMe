@@ -7,3 +7,4 @@ pub mod session;
 pub mod settings;
 pub mod stats;
 pub mod study;
+pub mod test_utils;
