@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { invoke } from '@tauri-apps/api/core'
+import { invoke } from '@/api/invoke'
 import { Pencil, Trash2, Check, X } from 'lucide-react'
 import { Sidebar } from './Sidebar'
 import { BottomTabs } from './BottomTabs'
@@ -40,9 +40,9 @@ function GlobalHeader() {
       </span>
       <button
         onClick={openCommandPalette}
-        className="flex items-center justify-between gap-3 rounded px-2.5 py-1 text-xs transition-colors duration-100"
+        className="flex w-full items-center justify-between gap-3 rounded px-2.5 py-1 text-xs transition-colors duration-100"
         style={{
-          width: 200,
+          maxWidth: 200,
           color: 'var(--text-muted)',
           border: '1px solid var(--border)',
           background: 'var(--surface)',
@@ -534,7 +534,7 @@ export function AppLayout() {
     <>
       {/* ── Desktop: fixed 3-column panel layout ── */}
       <div
-        className="hidden md:flex h-screen overflow-hidden"
+        className="hidden lg:flex h-screen overflow-hidden"
         style={{ background: 'var(--bg)' }}
       >
         {/* Col 1: Sidebar — fixed w-64, collapses in zen mode */}
@@ -570,7 +570,7 @@ export function AppLayout() {
 
       {/* ── Mobile: single-column with bottom tabs ── */}
       <div
-        className="flex md:hidden min-h-screen flex-col"
+        className="flex lg:hidden min-h-screen flex-col w-full"
         style={{ background: 'var(--bg)' }}
       >
         <GlobalHeader />

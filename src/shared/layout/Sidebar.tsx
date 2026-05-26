@@ -53,7 +53,7 @@ export function Sidebar() {
               />
               Categorías
             </span>
-            <span className="font-mono text-[11px] text-[var(--text-muted)]">⌥1</span>
+            <span className="hidden lg:inline font-mono text-[11px] text-[var(--text-muted)]">⌥1</span>
           </button>
         </div>
       </div>
@@ -82,7 +82,7 @@ export function Sidebar() {
             />
             Ajustes
           </span>
-          <span className="font-mono text-[11px] text-[var(--text-muted)]">⌥2</span>
+          <span className="hidden lg:inline font-mono text-[11px] text-[var(--text-muted)]">⌥2</span>
         </button>
       </div>
     </nav>
