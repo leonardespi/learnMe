@@ -24,7 +24,7 @@ src-tauri/target/
 Cargo.lock.bak
 
 # ── Tauri ─────────────────────────────────────────────────────────────────────
-src-tauri/gen/
+src-tauri/gen/schemas/
 src-tauri/WixTools/
 
 # ── Test output ───────────────────────────────────────────────────────────────
