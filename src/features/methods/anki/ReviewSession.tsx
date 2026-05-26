@@ -79,12 +79,12 @@ export function ReviewSession({ deckId, onComplete, onExit }: Props) {
   return (
     <div
       data-testid="review-session"
-      className="flex flex-col min-h-screen max-w-2xl mx-auto px-8 py-6"
+      className="flex flex-col h-full w-full px-8 pt-16 pb-6"
     >
       {/* Progress */}
-      <div className="flex items-center gap-4 mb-12">
+      <div className="flex items-center gap-4 mb-6 max-w-2xl w-full mx-auto">
         <div
-          className="flex-1 h-[1px] overflow-hidden"
+          className="flex-1 h-0.5 overflow-hidden"
           style={{ background: 'var(--border)' }}
         >
           <div
@@ -105,12 +105,18 @@ export function ReviewSession({ deckId, onComplete, onExit }: Props) {
         {onExit && (
           <button
             onClick={onExit}
-            className="font-mono text-xs transition-colors duration-100 flex-shrink-0"
+            className="flex items-center gap-1.5 flex-shrink-0 transition-colors duration-100 group"
             style={{ color: 'var(--text-muted)' }}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
-            Esc
+            <kbd
+              className="font-mono text-[10px] px-1.5 py-0.5 rounded leading-none"
+              style={{ border: '1px solid var(--border)' }}
+            >
+              Esc
+            </kbd>
+            <span className="font-mono text-[10px]">to exit</span>
           </button>
         )}
       </div>

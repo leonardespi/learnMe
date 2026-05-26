@@ -20,13 +20,13 @@ export function ReviewCard({ card, phase, onReveal, onGrade }: Props) {
   return (
     <div
       data-testid="review-card"
-      className="flex flex-col items-center flex-1 py-16 gap-12"
+      className="flex flex-col items-center justify-center flex-1 py-8 gap-12"
     >
       {/* Front */}
       <div
         data-testid="card-front"
-        className="text-2xl font-medium text-center leading-relaxed max-w-prose tracking-tight prose-invert"
-        style={{ color: 'var(--text)' }}
+        className="font-medium text-center leading-relaxed max-w-2xl tracking-tight"
+        style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)', color: 'var(--text)' }}
       >
         <ReactMarkdown>{card.front}</ReactMarkdown>
       </div>
