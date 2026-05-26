@@ -71,8 +71,9 @@ pub async fn card_update(
     back: String,
     tags: Vec<String>,
 ) -> Result<Card, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_card_update(&conn, &id, front, back, tags).map_err(|e| e.to_string())
+    crate::log_call("card_update");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_card_update(&conn, &id, front, back, tags).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -81,8 +82,9 @@ pub async fn card_bulk_insert(
     deck_id: String,
     cards: Vec<CardInput>,
 ) -> Result<usize, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_card_bulk_insert(&conn, &deck_id, cards).map_err(|e| e.to_string())
+    crate::log_call("card_bulk_insert");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_card_bulk_insert(&conn, &deck_id, cards).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -90,8 +92,9 @@ pub async fn card_delete(
     state: tauri::State<'_, crate::db::AppState>,
     id: String,
 ) -> Result<(), String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_card_delete(&conn, &id).map_err(|e| e.to_string())
+    crate::log_call("card_delete");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_card_delete(&conn, &id).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -99,8 +102,9 @@ pub async fn card_list_by_deck(
     state: tauri::State<'_, crate::db::AppState>,
     deck_id: String,
 ) -> Result<Vec<Card>, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_card_list_by_deck(&conn, &deck_id).map_err(|e| e.to_string())
+    crate::log_call("card_list_by_deck");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_card_list_by_deck(&conn, &deck_id).map_err(crate::log_err)
 }
 
 #[cfg(test)]

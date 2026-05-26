@@ -18,8 +18,9 @@ pub async fn settings_get(
     state: tauri::State<'_, crate::db::AppState>,
     key: String,
 ) -> Result<Option<String>, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_settings_get(&conn, &key).map_err(|e| e.to_string())
+    crate::log_call("settings_get");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_settings_get(&conn, &key).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -28,6 +29,7 @@ pub async fn settings_set(
     key: String,
     value: String,
 ) -> Result<(), String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_settings_set(&conn, &key, value).map_err(|e| e.to_string())
+    crate::log_call("settings_set");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_settings_set(&conn, &key, value).map_err(crate::log_err)
 }

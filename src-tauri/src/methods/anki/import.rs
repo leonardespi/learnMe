@@ -118,6 +118,63 @@ pub fn compute_new_cards(
     (to_insert, skipped)
 }
 
+pub fn cmd_import_anki_deck_by_study(
+    conn: &Connection,
+    study_id: &str,
+    value: &serde_json::Value,
+) -> Result<ImportResult, ImportError> {
+    validate_schema(value)?;
+
+    let cards_json = value["cards"].as_array().cloned().unwrap_or_default();
+
+    let existing_cards = card::list_by_deck(conn, study_id)?;
+    let existing_set: HashSet<(String, String)> = existing_cards
+        .iter()
+        .map(|c| (c.front.clone(), c.back.clone()))
+        .collect();
+
+    let incoming: Vec<CardImportData> = cards_json
+        .into_iter()
+        .filter_map(|v| serde_json::from_value(v).ok())
+        .collect();
+
+    let mut to_insert: Vec<&CardImportData> = Vec::new();
+    let mut skipped = 0usize;
+    for card_data in &incoming {
+        let key = (card_data.front.trim().to_string(), card_data.back.trim().to_string());
+        if existing_set.contains(&key) {
+            skipped += 1;
+        } else {
+            to_insert.push(card_data);
+        }
+    }
+    let inserted_count = to_insert.len() as u32;
+
+    if !to_insert.is_empty() {
+        let full_cards: Vec<card::CreateCardFull> = to_insert
+            .into_iter()
+            .map(|p| {
+                let due = p.due.clone().unwrap_or_else(|| chrono::Utc::now().to_rfc3339());
+                card::CreateCardFull {
+                    front: p.front.clone(),
+                    back: p.back.clone(),
+                    tags: p.tags.clone(),
+                    stability: p.stability.unwrap_or(0.0),
+                    difficulty: p.difficulty.unwrap_or(0.0),
+                    due,
+                    last_review: p.last_review.clone(),
+                    state: p.state.clone().unwrap_or_else(|| "new".to_string()),
+                    reps: p.reps.unwrap_or(0),
+                    lapses: p.lapses.unwrap_or(0),
+                }
+            })
+            .collect();
+        card::bulk_insert_full(conn, study_id, full_cards)?;
+    }
+
+    Ok(ImportResult { inserted: inserted_count, skipped: skipped as u32 })
+}
+
 pub fn cmd_import_anki_deck(
     conn: &Connection,
     category_id: &str,

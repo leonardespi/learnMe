@@ -25,8 +25,9 @@ pub async fn session_export(
     state: tauri::State<'_, AppState>,
     dest_path: String,
 ) -> Result<(), String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    let file = build_learnme(&conn, env!("CARGO_PKG_VERSION")).map_err(|e| e.to_string())?;
+    crate::log_call("session_export");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    let file = build_learnme(&conn, env!("CARGO_PKG_VERSION")).map_err(crate::log_err)?;
     let json =
         serde_json::to_string_pretty(&file).map_err(|e| format!("serialization error: {e}"))?;
     std::fs::write(&dest_path, json).map_err(|e| format!("write error: {e}"))?;
@@ -39,12 +40,13 @@ pub async fn session_import_cmd(
     src_path: String,
     mode: String,
 ) -> Result<(), String> {
+    crate::log_call("session_import_cmd");
     let raw = std::fs::read_to_string(&src_path).map_err(|e| format!("read error: {e}"))?;
     let file: LearnmeFile = serde_json::from_str(&raw).map_err(|e| format!("parse error: {e}"))?;
     let import_mode = match mode.as_str() {
         "replace" => ImportMode::Replace,
         _ => ImportMode::Merge,
     };
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    session_import(&conn, &file, import_mode).map_err(|e| e.to_string())
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    session_import(&conn, &file, import_mode).map_err(crate::log_err)
 }

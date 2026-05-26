@@ -54,6 +54,7 @@ pub async fn record_review(
     card_id: String,
     grade: u8,
 ) -> Result<RecordReviewResult, RepoError> {
+    crate::log_call("record_review");
     let conn = state.db.lock().unwrap();
     cmd_record_review(&conn, &card_id, grade, Utc::now())
 }

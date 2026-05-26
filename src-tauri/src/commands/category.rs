@@ -48,16 +48,18 @@ pub async fn category_create(
     state: tauri::State<'_, crate::db::AppState>,
     payload: CreateCategoryPayload,
 ) -> Result<Category, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_category_create(&conn, payload).map_err(|e| e.to_string())
+    crate::log_call("category_create");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_category_create(&conn, payload).map_err(crate::log_err)
 }
 
 #[tauri::command]
 pub async fn category_list(
     state: tauri::State<'_, crate::db::AppState>,
 ) -> Result<Vec<Category>, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_category_list(&conn).map_err(|e| e.to_string())
+    crate::log_call("category_list");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_category_list(&conn).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -67,8 +69,9 @@ pub async fn category_update(
     name: String,
     color: Option<String>,
 ) -> Result<Category, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_category_update(&conn, &id, name, color).map_err(|e| e.to_string())
+    crate::log_call("category_update");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_category_update(&conn, &id, name, color).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -76,8 +79,9 @@ pub async fn category_delete(
     state: tauri::State<'_, crate::db::AppState>,
     id: String,
 ) -> Result<(), String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_category_delete(&conn, &id).map_err(|e| e.to_string())
+    crate::log_call("category_delete");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_category_delete(&conn, &id).map_err(crate::log_err)
 }
 
 #[cfg(test)]

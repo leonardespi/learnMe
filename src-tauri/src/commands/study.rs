@@ -58,8 +58,9 @@ pub async fn study_create(
     state: tauri::State<'_, crate::db::AppState>,
     payload: CreateStudyPayload,
 ) -> Result<Study, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_study_create(&conn, payload).map_err(|e| e.to_string())
+    crate::log_call("study_create");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_study_create(&conn, payload).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -67,8 +68,9 @@ pub async fn study_list_by_category(
     state: tauri::State<'_, crate::db::AppState>,
     category_id: String,
 ) -> Result<Vec<Study>, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_study_list_by_category(&conn, &category_id).map_err(|e| e.to_string())
+    crate::log_call("study_list_by_category");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_study_list_by_category(&conn, &category_id).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -77,8 +79,9 @@ pub async fn study_update(
     id: String,
     name: String,
 ) -> Result<Study, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_study_update(&conn, &id, name).map_err(|e| e.to_string())
+    crate::log_call("study_update");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_study_update(&conn, &id, name).map_err(crate::log_err)
 }
 
 #[tauri::command]
@@ -86,16 +89,18 @@ pub async fn study_delete(
     state: tauri::State<'_, crate::db::AppState>,
     id: String,
 ) -> Result<(), String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    cmd_study_delete(&conn, &id).map_err(|e| e.to_string())
+    crate::log_call("study_delete");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    cmd_study_delete(&conn, &id).map_err(crate::log_err)
 }
 
 #[tauri::command]
 pub async fn study_list_all(
     state: tauri::State<'_, crate::db::AppState>,
 ) -> Result<Vec<Study>, String> {
-    let conn = state.db.lock().map_err(|e| e.to_string())?;
-    crate::repo::study::list_all(&conn).map_err(|e| e.to_string())
+    crate::log_call("study_list_all");
+    let conn = state.db.lock().map_err(crate::log_err)?;
+    crate::repo::study::list_all(&conn).map_err(crate::log_err)
 }
 
 #[cfg(test)]

@@ -113,6 +113,7 @@ pub async fn next_card(
     deck_id: String,
     new_limit: u32,
 ) -> Result<Option<Card>, RepoError> {
+    crate::log_call("next_card");
     let conn = state.db.lock().unwrap();
     cmd_next_card(&conn, &deck_id, new_limit)
 }
@@ -124,6 +125,7 @@ pub async fn forecast(
     deck_id: String,
     days: u32,
 ) -> Result<Vec<u32>, RepoError> {
+    crate::log_call("forecast");
     let conn = state.db.lock().unwrap();
     cmd_forecast(&conn, &deck_id, days)
 }

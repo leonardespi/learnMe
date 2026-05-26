@@ -10,6 +10,7 @@ pub async fn get_stats(
     state: tauri::State<'_, AppState>,
     study_id: String,
 ) -> Result<DeckStats, RepoError> {
+    crate::log_call("get_stats");
     let conn = state.db.lock().unwrap();
     cmd_get_stats(&conn, &study_id)
 }

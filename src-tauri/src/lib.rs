@@ -6,6 +6,22 @@ pub mod repo;
 pub mod session;
 pub mod stats;
 
+/// Converts any error to String. In debug builds, also prints to stderr with color.
+pub fn log_err<E: std::fmt::Display>(e: E) -> String {
+    let msg = e.to_string();
+    #[cfg(debug_assertions)]
+    eprintln!("\x1b[31m[IPC ❌]\x1b[0m {}", msg);
+    msg
+}
+
+/// Logs an IPC command call to stderr in debug builds.
+#[cfg(debug_assertions)]
+pub fn log_call(cmd: &str) {
+    eprintln!("\x1b[36m[IPC →]\x1b[0m {}", cmd);
+}
+#[cfg(not(debug_assertions))]
+pub fn log_call(_cmd: &str) {}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
