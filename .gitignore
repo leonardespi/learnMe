@@ -63,6 +63,8 @@ desktop.ini
 
 # ── Claude Code (AI agent internal context — not for public repo) ─────────────
 .claude/
+CLAUDE.md
+CLAUDE.full.md
 
 # ── Misc ──────────────────────────────────────────────────────────────────────
 *.log
