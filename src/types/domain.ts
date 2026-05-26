@@ -6,6 +6,8 @@ export interface Category {
   updatedAt: string
 }
 
+export type StudyMethod = 'anki'
+
 export interface Study {
   id: string
   categoryId: string

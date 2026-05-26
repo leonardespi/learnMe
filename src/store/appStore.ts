@@ -11,12 +11,14 @@ type View =
 interface AppStore {
   view: View
   commandPaletteOpen: boolean
+  settingsSection: string
   navigateToCategories: () => void
   navigateToCategoryDetail: (categoryId: string) => void
   navigateToStudyDetail: (studyId: string, categoryId: string) => void
   navigateToReviewSession: (studyId: string, categoryId: string) => void
   navigateToStats: (studyId: string, categoryId: string) => void
   navigateToSettings: () => void
+  setSettingsSection: (id: string) => void
   openCommandPalette: () => void
   closeCommandPalette: () => void
 }
@@ -24,6 +26,7 @@ interface AppStore {
 export const useAppStore = create<AppStore>((set) => ({
   view: { name: 'categories' },
   commandPaletteOpen: false,
+  settingsSection: 'backup',
   navigateToCategories: () => set({ view: { name: 'categories' } }),
   navigateToCategoryDetail: (categoryId) =>
     set({ view: { name: 'category-detail', categoryId } }),
@@ -33,7 +36,8 @@ export const useAppStore = create<AppStore>((set) => ({
     set({ view: { name: 'review-session', studyId, categoryId } }),
   navigateToStats: (studyId, categoryId) =>
     set({ view: { name: 'stats', studyId, categoryId } }),
-  navigateToSettings: () => set({ view: { name: 'settings' } }),
+  navigateToSettings: () => set({ view: { name: 'settings' }, settingsSection: 'backup' }),
+  setSettingsSection: (id) => set({ settingsSection: id }),
   openCommandPalette: () => set({ commandPaletteOpen: true }),
   closeCommandPalette: () => set({ commandPaletteOpen: false }),
 }))
