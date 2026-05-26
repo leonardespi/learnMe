@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { invoke } from '@tauri-apps/api/core'
+import { invoke } from '@/api/invoke'
 import { SettingsView, ExportImportStatus } from './SettingsView'
 import { useAppStore } from '@/store/appStore'
 

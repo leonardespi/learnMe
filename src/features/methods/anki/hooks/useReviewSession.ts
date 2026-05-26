@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { invoke } from '@tauri-apps/api/core'
+import { invoke } from '@/api/invoke'
 import type { Card } from '@/types/domain'
 
 export type ReviewPhase = 'front' | 'back' | 'complete'

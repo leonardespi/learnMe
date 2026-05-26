@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { invoke } from '@tauri-apps/api/core'
+import { invoke } from '@/api/invoke'
 import { StatsView } from './StatsView'
 import type { DeckStats } from './StatsView'
 import { useAppStore } from '@/store/appStore'
