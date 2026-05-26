@@ -1,0 +1,18 @@
+# Heavy build artifacts (redundant with .gitignore but explicit)
+node_modules/
+src-tauri/target/
+dist/
+coverage/
+
+# Test output / reports
+playwright-report/
+test-results/
+
+# Phase docs — large, not needed for code tasks
+docs/
+
+# Fixtures — large JSON, only needed when working on tests
+fixtures/
+
+# Insta snapshots
+src-tauri/src/**/*.snap

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0.0",
+  "method": "anki",
+  "name": "Cultura General de Anime & Manga",
+  "tags": ["anime", "otaku", "trivia"],
+  "cards": [
+    {
+      "front": "# ¿Quién es el creador de la obra *Dragon Ball*?",
+      "back": "El creador es **Akira Toriyama**, estrenado originalmente como manga en 1984.",
+      "tags": ["shonen", "dragon-ball", "clasicos"],
+      "state": "new"
+    },
+    {
+      "front": "### Identifica el Anime\n¿En qué serie los personajes utilizan un sistema de magia basado en la *energía maldita* y técnicas rituales?",
+      "back": "En **Jujutsu Kaisen** (creado por Gege Akutami).",
+      "tags": ["shonen", "moderno"],
+      "stability": 4.5,
+      "difficulty": 2.1,
+      "due": "2026-06-01T14:30:00Z",
+      "lastReview": "2026-05-25T10:15:30Z",
+      "state": "review",
+      "reps": 3,
+      "lapses": 0
+    },
+    {
+      "front": "¿Cuál es el nombre del estudio de animación fundado por Hayao Miyazaki e Isao Takahata, responsable de *El viaje de Chihiro*?",
+      "back": "**Studio Ghibli** (スタジオジブリ).",
+      "tags": ["peliculas", "ghibli"],
+      "stability": 12.8,
+      "difficulty": 1.5,
+      "due": "2026-07-15T00:00:00Z",
+      "lastReview": "2026-05-20T18:22:11Z",
+      "state": "review",
+      "reps": 7,
+      "lapses": 1
+    },
+    {
+      "front": "En *Death Note*, ¿cuál es el verdadero nombre del detective conocido mundialmente como **L**?",
+      "back": "Su verdadero nombre es **L Lawliet**.",
+      "tags": ["thriller", "death-note"],
+      "stability": 0.8,
+      "difficulty": 4.2,
+      "due": "2026-05-27T09:00:00Z",
+      "lastReview": "2026-05-26T09:00:00Z",
+      "state": "learning",
+      "reps": 1,
+      "lapses": 0
+    },
+    {
+      "front": "### Verdadero o Falso\nEl manga de *Berserk* fue escrito e ilustrado originalmente por Eiichiro Oda.",
+      "back": "**Falso**. El autor original de *Berserk* fue **Kentaro Miura**. Eiichiro Oda es el creador de *One Piece*.",
+      "tags": ["seinen", "berserk"],
+      "state": "new"
+    }
+  ]
+}
