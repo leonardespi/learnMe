@@ -4,7 +4,7 @@ import { invoke } from '@/api/invoke'
 import { Pencil, Trash2, Check, X } from 'lucide-react'
 import { StudyDetail } from './StudyDetail'
 import { useAppStore } from '@/store/appStore'
-import type { Card, Study } from '@/types/domain'
+import type { Card, Study, StudyMethod } from '@/types/domain'
 
 // ─── Deck inspection panel (col3 for study-detail) ───────────────────────────
 
@@ -224,12 +224,18 @@ interface CategoryStudiesViewProps {
   categoryId: string
 }
 
+const METHOD_TAG: Record<string, { background: string; color: string }> = {
+  anki: { background: '#7c3aed', color: '#ffffff' },
+}
+const DEFAULT_TAG = { background: '#6b7280', color: '#ffffff' }
+
 export function CategoryStudiesView({ categoryId }: CategoryStudiesViewProps) {
   const navigateToStudyDetail = useAppStore((s) => s.navigateToStudyDetail)
   const queryClient = useQueryClient()
 
   const [showForm, setShowForm] = useState(false)
   const [newName, setNewName] = useState('')
+  const [newMethod, setNewMethod] = useState<StudyMethod>('anki')
   const [renamingId, setRenamingId] = useState<string | null>(null)
   const [renameValue, setRenameValue] = useState('')
 
@@ -239,14 +245,15 @@ export function CategoryStudiesView({ categoryId }: CategoryStudiesViewProps) {
   })
 
   const createMutation = useMutation({
-    mutationFn: (name: string) =>
+    mutationFn: ({ name, method }: { name: string; method: StudyMethod }) =>
       invoke('study_create', {
-        payload: { category_id: categoryId, method: 'anki', name, payload: {} },
+        payload: { category_id: categoryId, method, name, payload: {} },
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['studies', categoryId] })
       setShowForm(false)
       setNewName('')
+      setNewMethod('anki')
     },
     onError: console.error,
   })
@@ -292,36 +299,55 @@ export function CategoryStudiesView({ categoryId }: CategoryStudiesViewProps) {
 
       {showForm && (
         <div
-          className="flex items-center gap-3 pb-4"
+          className="flex flex-col gap-2 pb-4"
           style={{ borderBottom: '1px solid var(--border)' }}
         >
-          <input
-            data-testid="input-study-name"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-            placeholder="Nombre del estudio"
-            className="flex-1 bg-transparent text-sm outline-none py-1 px-0"
-            style={{ color: 'var(--text)', borderBottom: '1px solid var(--accent)' }}
-            onKeyDown={(e) =>
-              e.key === 'Enter' && newName.trim() && createMutation.mutate(newName.trim())
-            }
-            autoFocus
-          />
-          <button
-            data-testid="btn-save-study"
-            onClick={() => newName.trim() && createMutation.mutate(newName.trim())}
-            className="text-xs font-medium px-2 py-1 hover:opacity-70 flex-shrink-0"
-            style={{ color: 'var(--accent)' }}
-          >
-            Guardar
-          </button>
-          <button
-            onClick={() => { setShowForm(false); setNewName('') }}
-            className="text-xs px-2 py-1 flex-shrink-0"
-            style={{ color: 'var(--text-muted)' }}
-          >
-            Cancelar
-          </button>
+          <div className="flex items-center gap-3">
+            <input
+              data-testid="input-study-name"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              placeholder="Nombre del estudio"
+              className="flex-1 bg-transparent text-sm outline-none py-1 px-0"
+              style={{ color: 'var(--text)', borderBottom: '1px solid var(--accent)' }}
+              onKeyDown={(e) =>
+                e.key === 'Enter' && newName.trim() && createMutation.mutate({ name: newName.trim(), method: newMethod })
+              }
+              autoFocus
+            />
+            <button
+              data-testid="btn-save-study"
+              onClick={() => newName.trim() && createMutation.mutate({ name: newName.trim(), method: newMethod })}
+              className="text-xs font-medium px-2 py-1 hover:opacity-70 flex-shrink-0"
+              style={{ color: 'var(--accent)' }}
+            >
+              Guardar
+            </button>
+            <button
+              onClick={() => { setShowForm(false); setNewName(''); setNewMethod('anki') }}
+              className="text-xs px-2 py-1 flex-shrink-0"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              Cancelar
+            </button>
+          </div>
+          <div className="flex items-center gap-2">
+            {(['anki'] as StudyMethod[]).map((m) => (
+              <button
+                key={m}
+                data-testid={`method-tag-${m}`}
+                onClick={() => setNewMethod(m)}
+                className="font-mono text-[11px] px-2.5 py-0.5 rounded-full transition-colors duration-100"
+                style={{
+                  color: newMethod === m ? 'var(--bg)' : 'var(--text-muted)',
+                  background: newMethod === m ? 'var(--accent)' : 'transparent',
+                  border: `1px solid ${newMethod === m ? 'var(--accent)' : 'var(--border)'}`,
+                }}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
@@ -375,6 +401,12 @@ export function CategoryStudiesView({ categoryId }: CategoryStudiesViewProps) {
                     onClick={() => navigateToStudyDetail(study.id, categoryId)}
                   >
                     {study.name}
+                  </span>
+                  <span
+                    className="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0 mr-2"
+                    style={METHOD_TAG[study.method] ?? DEFAULT_TAG}
+                  >
+                    {study.method}
                   </span>
                   <div className="flex items-center gap-2 ml-2 flex-shrink-0">
                     <button
